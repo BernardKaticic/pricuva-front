@@ -21,6 +21,30 @@ export class AppMenu {
     ngOnInit() {
         this.model = [
             {
+                items: [{label: 'Početna', icon: 'pi pi-fw pi-home', routerLink: ['/gradovi']}]
+            },
+            {
+                items: [{label: 'Gradovi', icon: 'pi pi-fw pi-building', routerLink: ['/pages/hierarchy-wizard/cities']}]
+            },
+            {
+                items: [{label: 'Financijska kartica', icon: 'pi pi-money-bill', routerLink: ['/pages/financial-card']}]
+            },
+            {
+                label: 'Dužnici',
+                items: [
+                    {label: 'Pregled dužnika', icon: 'pi pi-fw pi-address-book', routerLink: ['/pages/debtors']},
+                    {label: 'Opomene', icon: 'pi pi-envelope', routerLink: ['/pages/warnings']}
+                ]
+            },
+            {
+                label: 'Predstavnici',
+                items: [
+                    {label: 'Pregled predstavnika', icon: 'pi pi-id-card', routerLink: ['/pages/representatives']},
+                    {label: 'Drugi dohodak', icon: 'pi pi-money-bill', routerLink: ['/pages/other-income']}
+                ]
+            },
+
+            /*{
                 label: 'Home',
                 items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }]
             },
@@ -91,67 +115,7 @@ export class AppMenu {
                         routerLink: ['/pages/empty']
                     }
                 ]
-            },
-            {
-                label: 'Hierarchy',
-                items: [
-                    {
-                        label: 'Submenu 1',
-                        icon: 'pi pi-fw pi-bookmark',
-                        items: [
-                            {
-                                label: 'Submenu 1.1',
-                                icon: 'pi pi-fw pi-bookmark',
-                                items: [
-                                    { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark' },
-                                    { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark' },
-                                    { label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-bookmark' }
-                                ]
-                            },
-                            {
-                                label: 'Submenu 1.2',
-                                icon: 'pi pi-fw pi-bookmark',
-                                items: [{ label: 'Submenu 1.2.1', icon: 'pi pi-fw pi-bookmark' }]
-                            }
-                        ]
-                    },
-                    {
-                        label: 'Submenu 2',
-                        icon: 'pi pi-fw pi-bookmark',
-                        items: [
-                            {
-                                label: 'Submenu 2.1',
-                                icon: 'pi pi-fw pi-bookmark',
-                                items: [
-                                    { label: 'Submenu 2.1.1', icon: 'pi pi-fw pi-bookmark' },
-                                    { label: 'Submenu 2.1.2', icon: 'pi pi-fw pi-bookmark' }
-                                ]
-                            },
-                            {
-                                label: 'Submenu 2.2',
-                                icon: 'pi pi-fw pi-bookmark',
-                                items: [{ label: 'Submenu 2.2.1', icon: 'pi pi-fw pi-bookmark' }]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                label: 'Get Started',
-                items: [
-                    {
-                        label: 'Documentation',
-                        icon: 'pi pi-fw pi-book',
-                        routerLink: ['/documentation']
-                    },
-                    {
-                        label: 'View Source',
-                        icon: 'pi pi-fw pi-github',
-                        url: 'https://github.com/primefaces/sakai-ng',
-                        target: '_blank'
-                    }
-                ]
-            }
+            },*/
         ];
     }
 }

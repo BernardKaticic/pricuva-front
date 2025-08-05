@@ -7,10 +7,36 @@ import { providePrimeNG } from 'primeng/config';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-    providers: [
-        provideRouter(appRoutes, withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }), withEnabledBlockingInitialNavigation()),
-        provideHttpClient(withFetch()),
-        provideAnimationsAsync(),
-        providePrimeNG({ theme: { preset: Aura, options: { darkModeSelector: '.app-dark' } } })
-    ]
+  providers: [
+    provideRouter(
+      appRoutes,
+      withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
+      withEnabledBlockingInitialNavigation()
+    ),
+    provideHttpClient(withFetch()),
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: { darkModeSelector: '.app-dark' }
+      },
+      translation: {
+        dayNames: ["Nedjelja", "Ponedjeljak", "Utorak", "Srijeda", "Četvrtak", "Petak", "Subota"],
+        dayNamesShort: ["Ned", "Pon", "Uto", "Sri", "Čet", "Pet", "Sub"],
+        dayNamesMin: ["N", "P", "U", "S", "Č", "P", "S"],
+        monthNames: [
+          "Siječanj", "Veljača", "Ožujak", "Travanj", "Svibanj", "Lipanj",
+          "Srpanj", "Kolovoz", "Rujan", "Listopad", "Studeni", "Prosinac"
+        ],
+        monthNamesShort: [
+          "Sij", "Vel", "Ožu", "Tra", "Svi", "Lip",
+          "Srp", "Kol", "Ruj", "Lis", "Stu", "Pro"
+        ],
+        today: 'Danas',
+        clear: 'Očisti',
+        dateFormat: 'dd.mm.yy',
+        firstDayOfWeek: 1
+      }
+    })
+  ]
 };
