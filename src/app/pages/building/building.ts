@@ -168,8 +168,7 @@ export class Building {
         { id: 1, name: 'Marko Marković - predstavnik', areaOfApartment: 68.39, apartment: 19, floor: 2, oib: '12312312312', phoneNumber: '099099099', email: 'markomarkovic@gmail.com', sendingInvoice: 'mail' },
         { id: 2, name: 'Petar Petrović', areaOfApartment: 68.39, apartment: 19, floor: 2, oib: '12312312312', phoneNumber: '099099099', email: 'markomarkovic@gmail.com', sendingInvoice: 'mail' },
         { id: 3, name: 'Josip Josipović', areaOfApartment: 68.39, apartment: 19, floor: 2, oib: '12312312312', phoneNumber: '099099099', email: 'markomarkovic@gmail.com', sendingInvoice: 'mail' },
-        { id: 4, name: 'Ivan Ivanović', areaOfApartment: 68.39, apartment: 19, floor: 2, oib: '12312312312', phoneNumber: '099099099', email: 'markomarkovic@gmail.com', sendingInvoice: 'mail' },
-        { id: 5, name: 'Ante Antunović' }
+        { id: 4, name: 'Ivan Ivanović', areaOfApartment: 68.39, apartment: 19, floor: 2, oib: '12312312312', phoneNumber: '099099099', email: 'markomarkovic@gmail.com', sendingInvoice: 'mail' }
     ];
     value: string = 'posta';
 
@@ -230,7 +229,7 @@ export class Building {
     }
 
     saveCity() {
-        if (this.dialogMode === 'add') {
+      /*  if (this.dialogMode === 'add') {
             const newId = Math.max(...this.owners.map((c) => c.id), 0) + 1;
             this.owners.push({ id: newId, name: this.cityForm.name });
             this.messageService.add({ severity: 'success', summary: 'Dodano', detail: 'Grad je dodan.' });
@@ -239,7 +238,7 @@ export class Building {
             if (index > -1) this.owners[index].name = this.cityForm.name;
             this.messageService.add({ severity: 'success', summary: 'Ažurirano', detail: 'Grad je ažuriran.' });
         }
-
+*/
         this.displayDialog = false;
     }
 

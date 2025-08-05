@@ -27,34 +27,48 @@ import { Router } from '@angular/router';
                 </span>
             </div>
         </div>
-    <div class="overflow-auto flex-1">
-        <p-table #dt1 [value]="cities" [filters]="filters" class="p-datatable-sm flex-1" style="min-height: 0;" [responsiveLayout]="'scroll'" selectionMode="single" dataKey="id" (onRowSelect)="onCitySelect($event.data)" [rows]="10" [globalFilterFields]="['name']" [paginator]="true" [rowsPerPageOptions]="[10, 15, 20]">
-            <ng-template pTemplate="body" let-city>
-                <tr [pSelectableRow]="city" class="cursor-pointer hover:bg-gray-100">
-                    <td class="font-medium" style="min-width: 150px;">{{ city.name }}</td>
-                    <td style="white-space: nowrap; text-align: right;">
-                        <button pButton icon="pi pi-pencil" class="p-button-text" (click)="openEditCity(city)"></button>
-                        <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="confirmDeleteCity(city)"></button>
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
+        <div class="overflow-auto flex-1">
+            <p-table
+                #dt1
+                [value]="cities"
+                [filters]="filters"
+                class="p-datatable-sm flex-1"
+                style="min-height: 0;"
+                [responsiveLayout]="'scroll'"
+                selectionMode="single"
+                dataKey="id"
+                (onRowSelect)="onCitySelect($event.data)"
+                [rows]="10"
+                [globalFilterFields]="['name']"
+                [paginator]="true"
+                [rowsPerPageOptions]="[10, 15, 20]"
+            >
+                <ng-template pTemplate="body" let-city>
+                    <tr [pSelectableRow]="city" class="cursor-pointer hover:bg-gray-100">
+                        <td class="font-medium" style="min-width: 150px;">{{ city.name }}</td>
+                        <td style="white-space: nowrap; text-align: right;">
+                            <button pButton icon="pi pi-pencil" class="p-button-text" (click)="openEditCity(city)"></button>
+                            <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="confirmDeleteCity(city)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
 
-        <p-dialog [style]="{width: '300px'}" header="{{ dialogMode === 'add' ? 'Dodaj grad' : 'Uredi grad' }}" [(visible)]="displayDialog" modal [closable]="true">
-            <form class="flex flex-col gap-3" (ngSubmit)="saveCity()">
-                <div>
-                    <label for="name" class="block text-sm font-medium">Naziv grada</label>
-                    <input class="w-full" id="name" pInputText [(ngModel)]="cityForm.name" name="name" required />
-                </div>
-                <div class="flex justify-end gap-2">
-                    <button pButton label="Odustani" class="p-button-text" (click)="displayDialog = false" type="button"></button>
-                    <button pButton label="Spremi" type="submit" [disabled]="!cityForm.name"></button>
-                </div>
-            </form>
-        </p-dialog>
+            <p-dialog [style]="{ width: '300px' }" header="{{ dialogMode === 'add' ? 'Dodaj grad' : 'Uredi grad' }}" [(visible)]="displayDialog" modal [closable]="true">
+                <form class="flex flex-col gap-3" (ngSubmit)="saveCity()">
+                    <div>
+                        <label for="name" class="block text-sm font-medium">Naziv grada</label>
+                        <input class="w-full" id="name" pInputText [(ngModel)]="cityForm.name" name="name" required />
+                    </div>
+                    <div class="flex justify-end gap-2">
+                        <button pButton label="Odustani" class="p-button-text" (click)="displayDialog = false" type="button"></button>
+                        <button pButton label="Spremi" type="submit" [disabled]="!cityForm.name"></button>
+                    </div>
+                </form>
+            </p-dialog>
 
-        <p-confirmDialog></p-confirmDialog>
-    </div>
+            <p-confirmDialog></p-confirmDialog>
+        </div>
     `
 })
 export class Cities {
@@ -129,7 +143,7 @@ export class Cities {
 
     onCitySelect(city: any) {
         this.router.navigate(['/pages/hierarchy-wizard/streets', city.id], {
-            queryParams: { cityName: city.name}
+            queryParams: { cityName: city.name }
         });
     }
 }

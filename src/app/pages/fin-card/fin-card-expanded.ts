@@ -97,7 +97,7 @@ import { DatePickerModule } from 'primeng/datepicker';
 
                 <p-selectbutton *ngIf="tempvar" [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" aria-labelledby="basic" allowEmpty="false" />
 
-                <div *ngIf="value==='dobavljaci' && tempvar" class="col-12 md:col-6 p-4 surface-card border-round">
+                <div *ngIf="value === 'dobavljaci' && tempvar" class="col-12 md:col-6 p-4 surface-card border-round">
                     <!-- Table -->
                     <p-table [value]="dobavljaci" [responsiveLayout]="'scroll'" styleClass="p-datatable-sm">
                         <ng-template pTemplate="header">
@@ -115,7 +115,7 @@ import { DatePickerModule } from 'primeng/datepicker';
                     </p-table>
                 </div>
 
-                <div *ngIf="value==='stanje' && tempvar" class="col-12 md:col-6 p-4 surface-card border-round">
+                <div *ngIf="value === 'stanje' && tempvar" class="col-12 md:col-6 p-4 surface-card border-round">
                     <!-- Table -->
                     <p-table [value]="stanje" [responsiveLayout]="'scroll'" styleClass="p-datatable-sm">
                         <ng-template pTemplate="header">
@@ -178,21 +178,21 @@ export class FinancialCard {
     ];
 
     stanje = [
-        {id: 1, naziv: 'Zajednička struja', iznos: 31.11 },
-        {id: 2, naziv: 'Zajednička voda', iznos: 11.21 },
-        {id: 3, naziv: 'Servis dizala', iznos: 111.39 },
-        {id: 4, naziv: 'Osiguranje zgrade', iznos: 20.00 },
-        {id: 5, naziv: 'Servis vatrogasnih aparata', iznos: 30.00 },
-        {id: 6, naziv: 'Čišćenje zgrade', iznos: 250.00 },
-        {id: 7, naziv: 'Pregled dimnjaka', iznos: 60.00 },
-        {id: 8, naziv: 'Naknada predstavniku', iznos: 120.00 },
-        {id: 9, naziv: 'Naknada upravitelju', iznos: 200.00 },
-        {id: 10, naziv: 'Isplata šštete', iznos: 3990.00 },
-        {id: 11, naziv: 'Kamata banke', iznos: 0.46 },
-        {id: 12, naziv: 'Kredit', iznos: 2400.00 }
-    ]
+        { id: 1, naziv: 'Zajednička struja', iznos: 31.11 },
+        { id: 2, naziv: 'Zajednička voda', iznos: 11.21 },
+        { id: 3, naziv: 'Servis dizala', iznos: 111.39 },
+        { id: 4, naziv: 'Osiguranje zgrade', iznos: 20.0 },
+        { id: 5, naziv: 'Servis vatrogasnih aparata', iznos: 30.0 },
+        { id: 6, naziv: 'Čišćenje zgrade', iznos: 250.0 },
+        { id: 7, naziv: 'Pregled dimnjaka', iznos: 60.0 },
+        { id: 8, naziv: 'Naknada predstavniku', iznos: 120.0 },
+        { id: 9, naziv: 'Naknada upravitelju', iznos: 200.0 },
+        { id: 10, naziv: 'Isplata šštete', iznos: 3990.0 },
+        { id: 11, naziv: 'Kamata banke', iznos: 0.46 },
+        { id: 12, naziv: 'Kredit', iznos: 2400.0 }
+    ];
 
-    value: string = 'dobavljaci';
+    value: string = 'stanje';
 
     constructor(private filterService: FilterService) {}
 

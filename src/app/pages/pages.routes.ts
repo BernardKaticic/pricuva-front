@@ -29,8 +29,7 @@ export default [
             { path: 'street-numbers/:cityId/:streetId', component: HierarchyWizardComponent },
             { path: 'building/:cityId/:streetId/:streetNumberId', component: HierarchyWizardComponent },
             { path: 'fin-card/:cityId/:streetId/:streetNumberId/:ownerId', component: HierarchyWizardComponent }
-        ],
-        routerLinkActiveOptions: { exact: false}
+        ]
     },
     { path: '**', redirectTo: '/notfound' }
 ] as Routes;

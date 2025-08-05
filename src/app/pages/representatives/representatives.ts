@@ -53,26 +53,24 @@ import { SelectButtonModule } from 'primeng/selectbutton'
 </div>
 
             </div>
-            <div class="flex items-center gap-3 self-start">
-  <p-button (click)="popoverRef.toggle($event)" icon="pi pi-filter" label="Filter" severity="secondary" />
-                <button pButton icon="pi pi-plus" label="Dodaj predstavnika" (click)="openAddCity()"></button>
-            </div>
         </div>
 
-        <p-table [value]="financialData" class="p-datatable-sm" responsiveLayout="scroll" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 15, 20]" [scrollable]="true" scrollHeight="400px">
+        <p-table [value]="representatives" class="p-datatable-sm" responsiveLayout="scroll" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 15, 20]" [scrollable]="true" scrollHeight="400px">
   <ng-template pTemplate="header">
     <tr>
-      <th>Korisnik</th>
-      <th>Status</th>
-      <th>Datum</th>
+      <th>Suvlasnik</th>
+      <th>Adresa</th>
+      <th>Drugi dohodak</th>
+      <th>Iznos po mjesecu</th>
     </tr>
   </ng-template>
 
   <ng-template pTemplate="body" let-item>
     <tr>
-      <td>{{ item.vrsta }}</td>
-      <td>{{ item.iznos }}</td>
-      <td>{{ item.datum | date: 'dd.MM.yyyy' }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.address }}</td>
+      <td>{{ item.otherIncome }}</td>
+      <td>{{ item.total }}</td>
     </tr>
   </ng-template>
 </p-table>
@@ -83,13 +81,19 @@ export class Representatives {
     globalFilter: string = '';
     filters: { [s: string]: { value: string; matchMode: string } } = {};
 
-    financialData = [
-        { id: 1, vrsta: 'Zaduženje 3/2025', datum: "2025-03-14", iznos: 225.33, opis:  "Zaduženje za 3/2025", saldo: -255.33},
-        { id: 2, vrsta: 'Plaćanje 2/2025', datum: "2025-03-14", iznos: 54.11, opis:  "Zaduženje za 3/2025", saldo: 0 },
-        { id: 3, vrsta: 'Zaduženje 2/2025', datum: "2025-03-14", iznos: 54.11, opis:  "Zaduženje za 3/2025", saldo: -54.11 },
-        { id: 4, vrsta: 'Plaćanje 1/2025', datum: "2025-03-14", iznos: 118.52, opis:  "Zaduženje za 3/2025", saldo: 0 },
-        { id: 5, vrsta: 'Zaduženje 1/2025', datum: "2025-03-14", iznos: 118.52, opis:  "Zaduženje za 3/2025", saldo: -118.52 }
-    ];
+    representatives = [
+      { id: 1, name: 'Alerić Mato', address: 'Hrvatskih kraljeva 28, Vinkovci', otherIncome: 'DA', total: '12 €' },
+      { id: 2, name: 'Abigalić Ivan', address: 'Ante Starčevića 11, Osijek', otherIncome: 'NE', total: null },
+      { id: 3, name: 'Babić Ana', address: 'Pere Preradovića 10, Vinkovci', otherIncome: 'NE', total: null },
+      { id: 4, name: 'Cirki Jelena', address: 'Koštane srži 99, Vinkovci', otherIncome: 'NE', total: null },
+      { id: 5, name: 'Došen Luka', address: 'Luke Modrića 11, Slavonski Brod', otherIncome: 'DA', total: '40 €' },
+      { id: 6, name: 'Galić Mato', address: 'Budiše Asima 13, Vinkovci', otherIncome: 'DA', total: '30 €' },
+      { id: 7, name: 'Ivezić Sara', address: 'Dace Krajinovića 82, Vinkovci', otherIncome: 'DA', total: '25 €' },
+      { id: 8, name: 'Josić Mijo', address: 'Veslačka 13, Zagreb', otherIncome: 'DA', total: '30 €' },
+      { id: 9, name: 'Kalenić Goran', address: 'Županijska 10, Osijek', otherIncome: 'DA', total: '15 €' },
+      { id: 10, name: 'Popadić Ante', address: 'Ante Tatarovića 143, Vukovar', otherIncome: 'NE', total: null },
+      { id: 11, name: 'Rotz Robert', address: 'Cvjetni trg 55, Ilok', otherIncome: 'NE', total: null }
+    ]
 
     dropdownItems = [
         { name: 'Option 1', code: 'Option 1' },
@@ -185,7 +189,7 @@ export class Representatives {
         this.confirmationService.confirm({
             message: `Jeste li sigurni da želite obrisati grad "${city.name}"?`,
             accept: () => {
-                this.financialData = this.financialData.filter((c) => c.id !== city.id);
+                this.representatives = this.representatives.filter((c) => c.id !== city.id);
                 this.messageService.add({ severity: 'info', summary: 'Obrisano', detail: 'Grad je obrisan.' });
             }
         });

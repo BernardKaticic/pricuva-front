@@ -21,6 +21,8 @@ export const appConfig: ApplicationConfig = {
         options: { darkModeSelector: '.app-dark' }
       },
       translation: {
+        accept: 'Da',
+        reject: 'Ne',
         dayNames: ["Nedjelja", "Ponedjeljak", "Utorak", "Srijeda", "Četvrtak", "Petak", "Subota"],
         dayNamesShort: ["Ned", "Pon", "Uto", "Sri", "Čet", "Pet", "Sub"],
         dayNamesMin: ["N", "P", "U", "S", "Č", "P", "S"],

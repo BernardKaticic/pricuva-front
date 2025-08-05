@@ -21,13 +21,14 @@ import { ActivatedRoute, Router } from '@angular/router';
     template: `
             <div class="flex justify-between items-center mb-3">
             <div class="flex gap-5">
-            <h3 class="text-xl font-semibold m-0">Financijska kartica</h3>
+                    <h3 class="text-xl font-semibold m-0">Financijska kartica</h3>
             <p-datepicker class="self-start" placeholder="Odaberite datume" [showIcon]="true" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" dateFormat="dd.mm.yy"/>
-            </div>
-            <div class="flex items-center gap-3 self-start">
-                <button pButton icon="pi pi-plus" label="Dodaj uplatu/zaduženje" (click)="openAddCity()"></button>
-            </div>
+            <button pButton class="self-start" icon="pi pi-info-circle" severity="secondary" [label]="owner" (click)="openAddCity()"></button>
         </div>
+        <div class="flex items-center gap-3 self-start">
+            <button pButton icon="pi pi-plus" label="Dodaj uplatu/zaduženje" (click)="openAddCity()"></button>
+        </div>
+    </div>
 
         <p-table [value]="financialData" class="p-datatable-sm" responsiveLayout="scroll">
   <ng-template pTemplate="header">
@@ -69,6 +70,10 @@ export class FinCard {
         { id: 5, vrsta: 'Zaduženje 1/2025', datum: "2025-03-14", iznos: 118.52, opis:  "Zaduženje za 3/2025", saldo: -118.52 }
     ];
 
+        ownerDetails = [
+        { id: 1, name: 'Marko Marković - predstavnik', areaOfApartment: 68.39, apartment: 19, floor: 2, oib: '12312312312', phoneNumber: '099099099', email: 'markomarkovic@gmail.com', sendingInvoice: 'mail' },
+    ];
+
     dropdownItems = [
         { name: 'Option 1', code: 'Option 1' },
         { name: 'Option 2', code: 'Option 2' },
@@ -88,6 +93,7 @@ export class FinCard {
     selectedStreetNumberId: any;
     streetNumber: any;
     selectedOwnerId: any;
+    owner: any
 
     rangeDates: any;
 
@@ -114,6 +120,7 @@ export class FinCard {
             this.cityName = params.get('cityName') ?? '';
             this.streetName = params.get('streetName') ?? '';
             this.streetNumber = params.get('streetNumber') ?? '';
+            this.owner = params.get('owner')
         });
     }
 
